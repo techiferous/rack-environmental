@@ -1,0 +1,44 @@
+= Rack::Environmental
+
+== Description
+
+Never again will you accidentally delete production data!  Rack::Environmental adds
+an indicator badge to your web application so that you can tell whether you're
+working with the staging, test, development or production version of your web app.
+
+== Usage
+
+This Rack middleware can be used with any Rack application, but here's how you would
+use it in Rails.  Put the following in config/environment.rb:
+
+  config.middleware.use Rack::Environmental,
+                          :staging =>     { :url => /^staging.+$/   },
+                          :test =>        { :url => /^test.+$/      },
+                          :development => { :url => /^localhost.+$/ }
+
+When a request comes to your web app, Rack::Environmental compares the URL to the supplied
+regular expressions.  If the URL matches, the name of the environment is displayed at the
+top of the web page.
+
+Each environment can be further configured:
+
+  config.middleware.use Rack::Environmental,
+                          :staging =>     { :url => /^staging.+$/,
+                                            :color => "yellow",
+                                            :size => :large          },
+                          :test =>        { :url => /^test.+$/,
+                                            :color => "purple",
+                                            :style => :badge         },
+                          :development => { :url => /^localhost.+$/,
+                                            :color => "orange"       }
+
+Here's the full list of configuration options:
+
+  :url      => a regular expression
+  :style    => either :badge (a transparent, floating badge) or :banner (default)
+  :color    => a string that represents a CSS color, such as "red", "rgb(6,70,14)", or "#8e6630"
+  :size     => :small, :medium, or :large; defaults to :medium
+  :opacity  => a number from 0 (completely transparent) to 1; only works with the badge style
+  :top      => distance in pixels from the top; only works with the badge style
+  :left     => distance in pixels from the left; only works with the badge style
+
