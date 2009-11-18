@@ -3,8 +3,10 @@ require 'rake/gempackagetask'
 require 'rubygems'
  
 gem_spec = Gem::Specification.new do |s|
-  s.name          = "environmental"
-  s.version       = "0.0.1"
+  s.name          = "rack-environmental"
+  s.version       = "1.0.2"
+  s.add_dependency 'rack', '>= 1.0.0'
+  s.add_dependency 'nokogiri', '>= 1.4.0'
   s.author        = "Wyatt Greene"
   s.email         = "techiferous@gmail.com"
   s.summary       = "Rack middleware that adds an indicator of your application environment"
@@ -13,9 +15,9 @@ gem_spec = Gem::Specification.new do |s|
     in (staging, test, etc.).
   }
   s.require_path  = "lib"
-  s.files         = ["lib/environmental.rb", "LICENSE", "Rakefile", "README",
+  s.files         = ["lib/rack-environmental.rb", "LICENSE", "Rakefile", "README",
                      "CHANGELOG"]
-  s.homepage      = "http://github.com/techiferous/environmental"
+  s.homepage      = "http://github.com/techiferous/rack-environmental"
   s.requirements  << "none"
   s.has_rdoc      = false
 end

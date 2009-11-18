@@ -1,36 +1,45 @@
 require 'nokogiri'
-
+ 
 module Rack
   class Environmental
-
+ 
     def initialize(app, options = {})
       @app = app
       @options = options
     end
     
     def call(env)
+      @doc = nil # clear out the doc object so we don't accidentally keep the last
+                 # request's HTML around
       @request = Rack::Request.new(env)
       status, @headers, @body = @app.call(env)
       if html?
-        @body = add_to_top_of_web_page(create_sticker)
+        add_to_top_of_web_page(create_sticker)
         update_content_length
       end
       [status, @headers, @body]
     end
     
     private
-
+ 
     def html?
       @headers["Content-Type"] && @headers["Content-Type"].include?("text/html")
     end
-    
+
     def add_to_top_of_web_page(node)
       if node
         doc.at_css("body").children.first.add_previous_sibling(node)
       end
-      doc.to_html
+      new_body_string = doc.to_html
+      # If we're dealing with a Rails response, we don't want to throw the
+      # response object away, we just want to update the response string.
+      if @body.class.name == "ActionController::Response"
+        @body.body = new_body_string
+      else
+        @body = [new_body_string]
+      end
     end
-
+ 
     def create_sticker
       environment_name = environment(@request.url)
       return nil if environment_name.nil?
@@ -41,7 +50,7 @@ module Rack
     end
     
     def environment(url)
-      url = url.split('//').last  # remove http://
+      url = url.split('//').last # remove http://
       @options.each do |environment_name, options|
         if options[:url] && options[:url] =~ url
           return environment_name
@@ -49,7 +58,7 @@ module Rack
       end
       return nil
     end
-
+ 
     def doc
       @doc ||= Nokogiri::HTML(body_to_string)
     end
@@ -90,10 +99,15 @@ module Rack
         style << "margin: 0px;"
       end
     end
-
+ 
     def update_content_length
-      @headers['Content-Length'] = Rack::Utils.bytesize(@body).to_s
+      length = 0
+      @body.each do |s|   # we can't use inject because @body may not respond to it
+        length += Rack::Utils.bytesize(s)   # we use Rack::Utils.bytesize to avoid
+                                            # incompatibilities between Ruby 1.8 and 1.9
+      end
+      @headers['Content-Length'] = length.to_s
     end
-
+ 
   end
 end

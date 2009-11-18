@@ -1,2 +1,16 @@
+1.0.2 (November 17, 2009)
+* BUGFIX: Another minor configuration tweak to get the gem to work properly.
+
+1.0.1 (November 17, 2009)
+* BUGFIX: Minor configuration tweaks to get the gem to work properly.
+
+1.0.0 (November 17, 2009)
+* BUGFIX: The body was being returned as a string, which is not in accordance with the Rack spec.
+* BUGFIX: The update content length algorithm was incorrect.
+* BUGFIX: The first HTML response body kept rewriting subsequent requests.
+* FEATURE: If the response is a Rails ActionController::Response object, we make sure we pass
+  it along.
+* API CHANGE: Renamed the gem from environmental to rack-environmental.
+
 0.0.1 (November 14, 2009)
 * Initial release.
