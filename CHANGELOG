@@ -1,3 +1,6 @@
+1.0.3 (December 3, 2009)
+* Refactored to use rack-plastic gem.
+
 1.0.2 (November 17, 2009)
 * BUGFIX: Another minor configuration tweak to get the gem to work properly.
 
