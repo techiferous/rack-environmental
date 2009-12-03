@@ -6,8 +6,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name          = "rack-environmental"
-    s.version       = "1.0.4"
-    s.add_dependency 'rack-plastic', '>= 0.0.0'
+    s.version       = "1.0.5"
+    s.add_dependency 'rack-plastic', '>= 0.0.3'
     s.author        = "Wyatt Greene"
     s.email         = "techiferous@gmail.com"
     s.summary       = "Rack middleware that adds an indicator of your application environment"
@@ -16,8 +16,13 @@ begin
       in (staging, test, etc.).
     }
     s.require_path  = "lib"
-    s.files         = ["lib/rack-environmental.rb", "LICENSE", "Rakefile", "README.rdoc",
-                       "CHANGELOG"]
+    s.files         = []
+    s.files         << "README.rdoc"
+    s.files         << "LICENSE"
+    s.files         << "CHANGELOG"
+    s.files         << "Rakefile"
+    s.files         += Dir.glob("lib/**/*")
+    s.files         += Dir.glob("test/**/*")
     s.homepage      = "http://github.com/techiferous/rack-environmental"
     s.requirements  << "none"
     s.has_rdoc      = false
