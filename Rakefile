@@ -6,8 +6,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name          = "rack-environmental"
-    s.version       = "1.0.3"
-    s.add_dependency 'plastic', '>= 0.0.0'
+    s.version       = "1.0.4"
+    s.add_dependency 'rack-plastic', '>= 0.0.0'
     s.author        = "Wyatt Greene"
     s.email         = "techiferous@gmail.com"
     s.summary       = "Rack middleware that adds an indicator of your application environment"
