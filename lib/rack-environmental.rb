@@ -4,24 +4,29 @@ module Rack
   class Environmental < Plastic
  
     def change_nokogiri_doc(doc)
+      initialize_environment_options
       add_to_top_of_web_page(doc, create_sticker(doc))
+      if @environment_options[:background]
+        body = doc.at_css("body")
+        background_style = "background-color: #{options[:color] || default_color};"
+        if body['style']
+          body['style'] << ";#{background_style}"
+        else
+          body['style'] = background_style
+        end
+      end
       doc
     end
 
     private
     
-    def add_to_top_of_web_page(doc, node)
-      if node
-        add_first_child(doc.at_css("body"), node)
+    def initialize_environment_options
+      @environment_name = environment(request.url)
+      if @environment_name
+        @environment_options = options[@environment_name]
+      else
+        @environment_options = {}
       end
-    end
- 
-    def create_sticker(doc)
-      environment_name = environment(request.url)
-      return nil if environment_name.nil?
-      div = create_node(doc, "div", environment_name.to_s)
-      div['style'] = style(options[environment_name])
-      div
     end
     
     def environment(url)
@@ -34,6 +39,19 @@ module Rack
       return nil
     end
  
+    def add_to_top_of_web_page(doc, node)
+      if node
+        add_first_child(doc.at_css("body"), node)
+      end
+    end
+ 
+    def create_sticker(doc)
+      return nil if @environment_name.nil?
+      div = create_node(doc, "div", @environment_name.to_s)
+      div['style'] = style(@environment_options)
+      div
+    end
+    
     def style(options)
       style = ""
       style << "font-family: Verdana, Arial, sans-serif;"
@@ -42,7 +60,7 @@ module Rack
       style << "text-align: center;"
       style << "color: black;"
       style << "padding: 3px;"
-      style << "background-color: #{options[:color] || "blue"};"
+      style << "background-color: #{options[:color] || default_color};"
       case options[:size]
       when :large
         style << "font-size: 20px;"
@@ -63,6 +81,10 @@ module Rack
       else
         style << "margin: 0px;"
       end
+    end
+    
+    def default_color
+      "blue"
     end
  
   end

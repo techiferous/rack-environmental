@@ -6,7 +6,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |s|
     s.name          = "rack-environmental"
-    s.version       = "1.0.5"
+    s.version       = "1.1.0"
     s.add_dependency 'rack-plastic', '>= 0.0.3'
     s.author        = "Wyatt Greene"
     s.email         = "techiferous@gmail.com"

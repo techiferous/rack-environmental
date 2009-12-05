@@ -124,3 +124,9 @@ Processing TommyBoyController#index (for 127.0.0.1 at 2009-12-03 01:37:05) [GET]
 Rendering template within layouts/application
 Rendering tommy_boy/index
 Completed in 3ms (View: 1, DB: 0) | 200 OK [http://localhost/]
+
+
+Processing TommyBoyController#index (for 127.0.0.1 at 2009-12-05 13:32:22) [GET]
+Rendering template within layouts/application
+Rendering tommy_boy/index
+Completed in 71ms (View: 69, DB: 0) | 200 OK [http://localhost/]

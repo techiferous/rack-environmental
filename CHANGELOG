@@ -1,4 +1,14 @@
+1.1.0 (December 5, 2009)
+* Added :background option.
+
+1.0.5 (December 3, 2009)
+* Updated gem dependency information.
+
+1.0.4 (December 3, 2009)
+* Refactored to (correctly) use rack-plastic gem.
+
 1.0.3 (December 3, 2009)
+* Do not use this version. It has a wrong gem dependency.
 * Refactored to use rack-plastic gem.
 
 1.0.2 (November 17, 2009)

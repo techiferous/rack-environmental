@@ -5,7 +5,8 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib', 'rack-environmental
 use Rack::Environmental, :staging =>     { :url => /^staging.+$/   },
                          :test =>        { :url => /^test.+$/      },
                          :development => { :url => /^localhost.+$/,
-                                           :style => :badge }
+                                           :style => :badge,
+                                           :background => true     }
 
 get '/' do
   %Q{
