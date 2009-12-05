@@ -6,6 +6,7 @@ use Rack::Environmental, :staging =>     { :url => /^staging.+$/   },
                          :test =>        { :url => /^test.+$/      },
                          :development => { :url => /^localhost.+$/,
                                            :style => :badge,
+                                           :color => "rgb(200, 20, 200);",
                                            :background => true     }
 
 get '/' do

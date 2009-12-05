@@ -8,7 +8,7 @@ module Rack
       add_to_top_of_web_page(doc, create_sticker(doc))
       if @environment_options[:background]
         body = doc.at_css("body")
-        background_style = "background-color: #{options[:color] || default_color};"
+        background_style = "background-color: #{@environment_options[:color] || default_color};"
         if body['style']
           body['style'] << ";#{background_style}"
         else

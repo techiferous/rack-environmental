@@ -1,3 +1,6 @@
+1.1.1 (December 5, 2009)
+* BUGFIX: :background option always produced a blue background.  Now it uses :color.
+
 1.1.0 (December 5, 2009)
 * Added :background option.
 
@@ -5,7 +8,7 @@
 * Updated gem dependency information.
 
 1.0.4 (December 3, 2009)
-* Refactored to (correctly) use rack-plastic gem.
+* BUGFIX: Refactored to (correctly) use rack-plastic gem.
 
 1.0.3 (December 3, 2009)
 * Do not use this version. It has a wrong gem dependency.
