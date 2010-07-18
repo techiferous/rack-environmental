@@ -48,6 +48,7 @@ module Rack
     def create_sticker(doc)
       return nil if @environment_name.nil?
       div = create_node(doc, "div", @environment_name.to_s)
+      div['id'] = 'rack_environmental'
       div['style'] = style(@environment_options)
       div
     end
