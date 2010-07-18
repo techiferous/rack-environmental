@@ -78,6 +78,7 @@ module Rack
         style << "top: #{options[:top] || 5}px;"
         style << "left: #{options[:left] || 5}px;"
         style << "opacity: #{options[:opacity] || 0.7};"
+        style << "z-index: 1000;"
         style << "-moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;"
       else
         style << "margin: 0px;"

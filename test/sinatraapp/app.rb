@@ -20,6 +20,10 @@ get '/' do
       </head>
       <body>
         <div id="container">
+          <div style="position: fixed; top: 20px; left: 20px; background-color: yellow;">
+            This is a fixed position div.  The environmental indicator should be on top
+            of this.
+          </div>
           <p>
             What my associate is trying to say is that our new brake pads are really cool.
             You're not even gonna believe it.
