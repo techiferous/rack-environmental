@@ -1,3 +1,9 @@
+1.2.0 (July 18, 2010)
+* The indicator no longer appears when you print the web page.
+* Added a z-index to the indicator to keep it on top.
+* Added an id to the indicator div so that users can have more control over it if they
+  wish to further tweak it with CSS or JavaScript.
+
 1.1.1 (December 5, 2009)
 * BUGFIX: :background option always produced a blue background.  Now it uses :color.
 
