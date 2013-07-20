@@ -35,10 +35,17 @@ Each environment can be further configured:
 Here's the full list of configuration options:
 
   :url        => a regular expression
-  :style      => either :badge (a transparent, floating badge) or :banner (default)
+  :style      => either :badge (a transparent, floating badge), :banner (default), or :none (ignore this environment)
   :color      => a string that represents a CSS color, such as "red", "rgb(6,70,14)", or "#8e6630"
   :size       => :small, :medium, or :large; defaults to :medium
   :opacity    => a number from 0 (completely transparent) to 1; only works with the badge style
   :top        => distance in pixels from the top; only works with the badge style
   :left       => distance in pixels from the left; only works with the badge style
   :background => true or false; when true, the body's background color is changed
+
+== Ignoring environments
+
+If there's a context where you want Rack::Environmental to specifically ignore your
+requests, such as a Jasmine test runner which returns essentially empty files to be
+built on by the test runner, you can "shut off" Rack::Environmental for that context
+by adding `:style => :none` to its options.

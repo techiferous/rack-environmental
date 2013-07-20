@@ -1,6 +1,6 @@
 require 'rake'
-require 'rake/gempackagetask'
 require 'rubygems'
+require 'rubygems/package_task'
 
 begin
   require 'jeweler'
