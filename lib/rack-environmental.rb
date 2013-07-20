@@ -48,6 +48,7 @@ module Rack
  
     def create_sticker(doc)
       return nil if @environment_name.nil?
+      return nil if @environment_options[:style] == :none
       div = create_node(doc, "div", @environment_name.to_s)
       div['id'] = 'rack_environmental'
       div['style'] = style(@environment_options)
@@ -56,6 +57,7 @@ module Rack
     
     def create_print_suppression_node(doc)
       return nil if @environment_name.nil?
+      return nil if @environment_options[:style] == :none
       style = create_node(doc, "style", '@media print { #rack_environmental {display:none;} }')
       style['type'] = 'text/css'
       style
