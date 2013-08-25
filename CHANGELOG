@@ -1,3 +1,6 @@
+1.3.0 (August 25, 2013)
+* Add a :style => :none option.
+
 1.2.0 (July 18, 2010)
 * The indicator no longer appears when you print the web page.
 * Added a z-index to the indicator to keep it on top.
