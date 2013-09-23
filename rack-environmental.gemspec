@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rack-environmental"
-  s.version = "1.2.0"
+  s.version = "1.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Wyatt Greene"]
-  s.date = "2013-07-19"
+  s.date = "2013-08-25"
   s.description = "\n      Rack::Environmental indicates which environment your web application is running\n      in (staging, test, etc.).\n    "
   s.email = "techiferous@gmail.com"
   s.extra_rdoc_files = [
@@ -83,7 +83,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/techiferous/rack-environmental"
   s.require_paths = ["lib"]
   s.requirements = ["none"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.25"
   s.summary = "Rack middleware that adds an indicator of your application environment"
 
   if s.respond_to? :specification_version then
