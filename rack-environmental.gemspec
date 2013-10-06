@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rack-environmental"
-  s.version = "1.3.0"
+  s.version = "1.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Wyatt Greene"]
-  s.date = "2013-08-25"
+  s.date = "2013-10-06"
   s.description = "\n      Rack::Environmental indicates which environment your web application is running\n      in (staging, test, etc.).\n    "
   s.email = "techiferous@gmail.com"
   s.extra_rdoc_files = [
