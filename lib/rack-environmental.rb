@@ -2,8 +2,9 @@ require 'rack-plastic'
 
 module Rack
   class Environmental < Plastic
- 
+
     def change_nokogiri_doc(doc)
+      return doc if request.xhr?
       initialize_environment_options
       add_to_top_of_web_page(doc, create_sticker(doc))
       add_to_top_of_web_page(doc, create_print_suppression_node(doc))
@@ -20,7 +21,7 @@ module Rack
     end
 
     private
-    
+
     def initialize_environment_options
       @environment_name = environment(request.url)
       if @environment_name
@@ -29,7 +30,7 @@ module Rack
         @environment_options = {}
       end
     end
-    
+
     def environment(url)
       url = url.split('//').last # remove http://
       options.each do |environment_name, options|
@@ -39,13 +40,13 @@ module Rack
       end
       return nil
     end
- 
+
     def add_to_top_of_web_page(doc, node)
       if node
         add_first_child(doc.at_css("body"), node)
       end
     end
- 
+
     def create_sticker(doc)
       return nil if @environment_name.nil?
       return nil if @environment_options[:style] == :none
@@ -54,7 +55,7 @@ module Rack
       div['style'] = style(@environment_options)
       div
     end
-    
+
     def create_print_suppression_node(doc)
       return nil if @environment_name.nil?
       return nil if @environment_options[:style] == :none
@@ -62,7 +63,7 @@ module Rack
       style['type'] = 'text/css'
       style
     end
-    
+
     def style(options)
       style = ""
       style << "font-family: Verdana, Arial, sans-serif;"
@@ -94,10 +95,10 @@ module Rack
         style << "margin: 0px;"
       end
     end
-    
+
     def default_color
       "blue"
     end
- 
+
   end
 end
