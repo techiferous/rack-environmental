@@ -6,6 +6,16 @@ Never again will you accidentally delete production data!  Rack::Environmental a
 an indicator badge to your web application so that you can tell whether you're
 working with the staging, test, development or production version of your web app.
 
+== Installation
+
+For bundler-managed applications just include Rack::Environmental in your Gemfile:
+
+    gem 'rack-environmental'
+
+Alternatively, you can install Rack::Environmental manually:
+
+    $ gem install rack-environmental
+
 == Usage
 
 This Rack middleware can be used with any Rack application, but here's how you would
