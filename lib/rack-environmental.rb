@@ -4,12 +4,12 @@ module Rack
   class Environmental < Plastic
 
     def change_nokogiri_doc(doc)
-      return doc if request.xhr?
+      body = doc.at_css("body")
+      return doc if request.xhr? || body.nil?
       initialize_environment_options
       add_to_top_of_web_page(doc, create_sticker(doc))
       add_to_top_of_web_page(doc, create_print_suppression_node(doc))
       if @environment_options[:background]
-        body = doc.at_css("body")
         background_style = "background-color: #{@environment_options[:color] || default_color};"
         if body['style']
           body['style'] << ";#{background_style}"
