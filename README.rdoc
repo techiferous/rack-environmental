@@ -19,7 +19,7 @@ Alternatively, you can install Rack::Environmental manually:
 == Usage
 
 This Rack middleware can be used with any Rack application, but here's how you would
-use it in Rails.  Put the following in config/environment.rb:
+use it in Rails.  Put the following in config/application.rb:
 
   config.middleware.use Rack::Environmental,
                           :staging =>     { :url => /^staging.+$/   },
